@@ -1,0 +1,39 @@
+services:
+  catalog-service-1:
+    build: ./catalog-service
+    ports:
+      - "5000:5000"
+    networks:
+      - bazarnet
+
+  catalog-service-2:
+    build: ./catalog-service-2
+    ports:
+      - "5003:5003"
+    networks:
+      - bazarnet
+
+  order-service-1:
+    build: ./order-service
+    ports:
+      - "5001:5001"
+    networks:
+      - bazarnet
+
+  order-service-2:
+    build: ./order-service-2
+    ports:
+      - "5004:5004"
+    networks:
+      - bazarnet
+
+  frontend-service:
+    build: ./frontend-service
+    ports:
+      - "5002:5002"
+    networks:
+      - bazarnet
+
+networks:
+  bazarnet:
+    driver: bridge
